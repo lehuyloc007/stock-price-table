@@ -26,10 +26,15 @@ setInterval(() => {
     const getRandomChange = () => +(Math.random() * 10 - 5).toFixed(2);
 
     const newPrices = symbols.map((symbol) => ({
-        symbol,
-        price: getRandomPrice(),
-        change: getRandomChange(),
+        code: symbol,
+        p3: 3,
+        v3: getRandomChange(),
+        p2: 3,
+        v2: getRandomChange(),
+        p1: getRandomPrice(),
+        v1: getRandomChange(),
     }));
+    console.log(newPrices);
     // Gửi danh sách giá mới cho tất cả client đang kết nối
     io.emit("newPrice", newPrices);
 }, 5000);
